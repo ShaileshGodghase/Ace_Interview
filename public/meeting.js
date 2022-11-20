@@ -77,6 +77,7 @@ text.addEventListener("keydown", (e) => {
 const inviteButton = document.getElementById("inviteButton");
 const muteButton = document.getElementById("micBtn");
 const stopVideo = document.getElementById("videoBtn");
+const endBtn = document.getElementById("endBtn");
 
 muteButton.addEventListener("click", () => {
    const enabled = myVideoStream.getAudioTracks()[0].enabled;
@@ -85,11 +86,17 @@ muteButton.addEventListener("click", () => {
       //   html = `<i class="fas fa-microphone-slash"></i>`;
       //   muteButton.classList.toggle("background__red");
       //   muteButton.innerHTML = html;
+      muteButton.classList.add("bg-red-600");
+      muteButton.classList.remove("bg2");
+      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
    } else {
       myVideoStream.getAudioTracks()[0].enabled = true;
       //   html = `<i class="fas fa-microphone"></i>`;
       //   muteButton.classList.toggle("background__red");
       //   muteButton.innerHTML = html;
+      muteButton.classList.add("bg2");
+      muteButton.classList.remove("bg-red-600");
+      muteButton.innerHTML = `<i class="fa-regular fa-microphone"></i>`;
    }
 });
 
@@ -100,11 +107,17 @@ stopVideo.addEventListener("click", () => {
       //   html = `<i class="fas fa-video-slash"></i>`;
       //   stopVideo.classList.toggle("background__red");
       //   stopVideo.innerHTML = html;
+      stopVideo.classList.add("bg-red-600");
+      stopVideo.classList.remove("bg2");
+      stopVideo.innerHTML = `<i class="fa-regular fa-video-slash"></i>`;
    } else {
       myVideoStream.getVideoTracks()[0].enabled = true;
       //   html = `<i class="fas fa-video"></i>`;
       //   stopVideo.classList.toggle("background__red");
       //   stopVideo.innerHTML = html;
+      stopVideo.classList.add("bg2");
+      stopVideo.classList.remove("bg-red-600");
+      stopVideo.innerHTML = `<i class="fa-regular fa-video"></i>`;
    }
 });
 
@@ -115,8 +128,20 @@ inviteButton.addEventListener("click", (e) => {
    );
 });
 
+endBtn.addEventListener("click", () => {
+   if (endBtn.classList.contains("bg2")) {
+      endBtn.classList.add("bg-red-600");
+      endBtn.classList.remove("bg2");
+      endBtn.innerHTML = `<i class="fa-regular fa-phone-slash"></i>`;
+   } else {
+      endBtn.classList.add("bg2");
+      endBtn.classList.remove("bg-red-600");
+      endBtn.innerHTML = `<i class="fa-regular fa-phone"></i>`;
+   }
+});
+
 socket.on("createMessage", (message, userName) => {
-   let str;
+   let str = messages.innerHTML;
    if (userName === user) {
       str = `
       <div

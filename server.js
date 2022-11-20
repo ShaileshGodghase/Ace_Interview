@@ -3,6 +3,7 @@ const app = express();
 const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
+
 const io = require("socket.io")(server, {
   cors: {
     origin: '*'
@@ -21,7 +22,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:room", (req, res) => {
-  res.render("room", { roomId: req.params.room });
+  // res.render("room", { roomId: req.params.room });
+  res.render("meeting", { roomId: req.params.room });
 });
 
 io.on("connection", (socket) => {

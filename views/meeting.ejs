@@ -46,167 +46,212 @@
       const ROOM_ID = "<%= roomId %>";
     </script>
   </head>
-  <body>
-    <!-- component -->
-    <div class="md:hidden">Join from Laptop/Desktop</div>
-    <div class="flex h-screen hidden md:flex">
-      <div class="flex-1 flex flex-col overflow-hidden">
-        <header class="flex mainBg text-white justify-between items-center p-4">
-          <div class="flex justify-center items-center">
-            <svg
-              class="w-auto h-6 text-blue-500 fill-current"
-              viewBox="0 0 194 116"
-              xmlns="http://www.w3.org/2000/svg"
+  <body id="body">
+    <!-- modal -->
+    <div
+      id="modal"
+      class="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+    >
+      <div class="relative w-auto my-6 mx-auto max-w-3xl">
+        <div
+          class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+        >
+          <div
+            class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t"
+          >
+            <h3 class="text-3xl font-semibold">Fullscreen Required</h3>
+            <button
+              class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
             >
-              <g fill-rule="evenodd">
-                <path
-                  d="M96.869 0L30 116h104l-9.88-17.134H59.64l47.109-81.736zM0 116h19.831L77 17.135 67.088 0z"
-                />
-                <path
-                  d="M87 68.732l9.926 17.143 29.893-51.59L174.15 116H194L126.817 0z"
-                />
-              </g>
-            </svg>
-            <h1 class="text-xl ml-2">Ace Interview</h1>
-          </div>
-          <div class="flex" id="menu"><i class="fa-solid fa-bars"></i></div>
-        </header>
-        <div class="flex h-full">
-          <main
-            id="mainContent"
-            class="flex flex-col w-3/4 h-full bg-white overflow-x-hidden overflow-y-auto mb-14 transition-all duration-500"
-          >
-            <div class="flex w-full h-full justify-between mx-auto">
-              <div class="bg-gray-500 grid grid-rows-5 w-3/4">
-                <div class="bg-black row-start-1 row-end-4 text-white">
-                  <!-- <h1>Editor</h1> -->
-                  <div id="editor" class="w-full h-full"></div>
-                  <!-- <textarea
-                    id="editor"
-                    class="w-full h-full resize-none"
-                    placeholder="Write code here"
-                  ></textarea> -->
-                </div>
-                <div class="row-start-4 row-end-6 grid">
-                  <div class="grid grid-row-1 grid-col-3 grid-flow-col">
-                    <div class="bg3 p-2">
-                      <!-- <h1>Input container</h1> -->
-                      <textarea
-                        class="w-full h-full p-2 border-none bg-gray-800 text-white outline-none resize-none"
-                        placeholder="Input Goes Here..."
-                      ></textarea>
-                    </div>
-                    <div class="bg3 p-2">
-                      <!-- <h1>Output container</h1> -->
-                      <textarea
-                        class="w-full h-full p-2 bg-gray-800 text-white border-none outline-none resize-none"
-                        placeholder="Output will appear here..."
-                      ></textarea>
-                    </div>
-                    <div
-                      class="mainBg text-white flex justify-evenly flex-col px-4"
-                    >
-                      <div>
-                        <label
-                          for="countries"
-                          class="block mb-2 text-lg font-medium"
-                          >Language</label
-                        >
-                        <select
-                          id="countries"
-                          class="bg-gray-50 border outline-none cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        >
-                          <option selected value="cpp">C++</option>
-                          <option value="java">Java</option>
-                          <option value="py">Python</option>
-                        </select>
-                        <div class="py-3 flex justify-center items-center">
-                          <button
-                            class="bg-blue-600 py-2 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
-                          >
-                            Run
-                          </button>
-                        </div>
-                      </div>
-                      <div class="flex justify-evenly">
-                        <button
-                          id="micBtn"
-                          class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                        >
-                          <i class="fa-regular fa-microphone"></i>
-                        </button>
-                        <button
-                          id="videoBtn"
-                          class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                        >
-                          <i class="fa-regular fa-video"></i>
-                        </button>
-                        <button
-                          id="endBtn"
-                          class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                        >
-                          <i class="fa-regular fa-phone"></i>
-                        </button>
-                      </div>
-                      <div class="flex justify-center items-center">
-                        <button
-                          id="inviteButton"
-                          class="bg-blue-600 py-1 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
-                        >
-                          Share Link
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="bg3 w-1/4 pt-2 h-full overflow-hidden">
-                <div class="h-full overflow-auto">
-                  <div
-                    id="video-grid"
-                    class="h-full pl-2 pr-4 overflow-auto"
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </main>
-          <nav
-            id="sidebar"
-            class="flex w-1/4 h-full bg2 transition-all duration-500"
-          >
-            <div class="w-full flex mx-auto">
-              <div
-                class="w-full h-full flex items-center justify-center text-xl"
+              <span
+                class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
               >
-                <!-- Component Start -->
-                <div
-                  class="flex flex-col flex-grow h-full w-full max-w-xl bg2 shadow-xl overflow-hidden"
-                >
-                  <div
-                    id="messages"
-                    class="flex flex-col flex-grow h-0 p-4 overflow-auto"
-                  ></div>
-
-                  <div class="bg3 p-4 flex justify-between">
-                    <input
-                      id="chat_message"
-                      class="flex items-center h-10 w-10/12 rounded px-3 text-sm"
-                      type="text"
-                      placeholder="Type your message…"
-                    />
-                    <button id="send">
-                      <i class="fa-solid fa-paper-plane-top text-white"></i>
-                    </button>
-                  </div>
-                </div>
-                <!-- Component End  -->
-              </div>
-            </div>
-          </nav>
+                ×
+              </span>
+            </button>
+          </div>
+          <div class="relative p-6 flex-auto">
+            <p class="my-4 text-slate-500 text-lg leading-relaxed">
+              Click Yes to start meeting
+            </p>
+          </div>
+          <div
+            class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"
+          >
+            <button
+              class="bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+              id="modalButton"
+            >
+              Yes
+            </button>
+          </div>
         </div>
       </div>
     </div>
+    <!-- component -->
+    <div class="md:hidden">Join from Laptop/Desktop</div>
+    <div id="meetingWrapper" class="hidden h-screen">
+      <div class="flex h-screen hidden md:flex">
+        <div class="flex-1 flex flex-col overflow-hidden">
+          <header
+            class="flex mainBg text-white justify-between items-center p-4"
+          >
+            <div class="flex justify-center items-center">
+              <svg
+                class="w-auto h-6 text-blue-500 fill-current"
+                viewBox="0 0 194 116"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g fill-rule="evenodd">
+                  <path
+                    d="M96.869 0L30 116h104l-9.88-17.134H59.64l47.109-81.736zM0 116h19.831L77 17.135 67.088 0z"
+                  />
+                  <path
+                    d="M87 68.732l9.926 17.143 29.893-51.59L174.15 116H194L126.817 0z"
+                  />
+                </g>
+              </svg>
+              <h1 class="text-xl ml-2">Ace Interview</h1>
+            </div>
+            <div class="flex" id="menu"><i class="fa-solid fa-bars"></i></div>
+          </header>
+          <div class="flex h-full">
+            <main
+              id="mainContent"
+              class="flex flex-col w-3/4 h-full bg-white overflow-x-hidden overflow-y-auto mb-14 transition-all duration-500"
+            >
+              <div class="flex w-full h-full justify-between mx-auto">
+                <div class="bg-gray-500 grid grid-rows-5 w-3/4">
+                  <div class="bg-black row-start-1 row-end-4 text-white">
+                    <!-- <h1>Editor</h1> -->
+                    <div id="editor" class="w-full h-full"></div>
+                    <!-- <textarea
+                      id="editor"
+                      class="w-full h-full resize-none"
+                      placeholder="Write code here"
+                    ></textarea> -->
+                  </div>
+                  <div class="row-start-4 row-end-6 grid">
+                    <div class="grid grid-row-1 grid-col-3 grid-flow-col">
+                      <div class="bg3 p-2">
+                        <!-- <h1>Input container</h1> -->
+                        <textarea
+                          class="w-full h-full p-2 border-none bg-gray-800 text-white outline-none resize-none"
+                          placeholder="Input Goes Here..."
+                        ></textarea>
+                      </div>
+                      <div class="bg3 p-2">
+                        <!-- <h1>Output container</h1> -->
+                        <textarea
+                          class="w-full h-full p-2 bg-gray-800 text-white border-none outline-none resize-none"
+                          placeholder="Output will appear here..."
+                        ></textarea>
+                      </div>
+                      <div
+                        class="mainBg text-white flex justify-evenly flex-col px-4"
+                      >
+                        <div>
+                          <label
+                            for="countries"
+                            class="block mb-2 text-lg font-medium"
+                            >Language</label
+                          >
+                          <select
+                            id="countries"
+                            class="bg-gray-50 border outline-none cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          >
+                            <option selected value="cpp">C++</option>
+                            <option value="java">Java</option>
+                            <option value="py">Python</option>
+                          </select>
+                          <div class="py-3 flex justify-center items-center">
+                            <button
+                              class="bg-blue-600 py-2 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
+                            >
+                              Run
+                            </button>
+                          </div>
+                        </div>
+                        <div class="flex justify-evenly">
+                          <button
+                            id="micBtn"
+                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
+                          >
+                            <i class="fa-regular fa-microphone"></i>
+                          </button>
+                          <button
+                            id="videoBtn"
+                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
+                          >
+                            <i class="fa-regular fa-video"></i>
+                          </button>
+                          <button
+                            id="endBtn"
+                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
+                          >
+                            <i class="fa-regular fa-phone"></i>
+                          </button>
+                        </div>
+                        <div class="flex justify-center items-center">
+                          <button
+                            id="inviteButton"
+                            class="bg-blue-600 py-1 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
+                          >
+                            Share Link
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg3 w-1/4 pt-2 h-full overflow-hidden">
+                  <div class="h-full overflow-auto">
+                    <div
+                      id="video-grid"
+                      class="h-full pl-2 pr-4 overflow-auto"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </main>
+            <nav
+              id="sidebar"
+              class="flex w-1/4 h-full bg2 transition-all duration-500"
+            >
+              <div class="w-full flex mx-auto">
+                <div
+                  class="w-full h-full flex items-center justify-center text-xl"
+                >
+                  <!-- Component Start -->
+                  <div
+                    class="flex flex-col flex-grow h-full w-full max-w-xl bg2 shadow-xl overflow-hidden"
+                  >
+                    <div
+                      id="messages"
+                      class="flex flex-col flex-grow h-0 p-4 overflow-auto"
+                    ></div>
 
+                    <div class="bg3 p-4 flex justify-between">
+                      <input
+                        id="chat_message"
+                        class="flex items-center h-10 w-10/12 rounded px-3 text-sm"
+                        type="text"
+                        placeholder="Type your message…"
+                      />
+                      <button id="send">
+                        <i class="fa-solid fa-paper-plane-top text-white"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Component End  -->
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
     <style>
       .CodeMirror {
         height: 100%;

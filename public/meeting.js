@@ -1,11 +1,28 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
+const body = document.getElementById('body');
+const modal = document.getElementById('modal');
+const modalBtn = document.getElementById('modalButton');
+const meetingWrapper = document.getElementById('meetingWrapper');
 // const showChat = document.querySelector("#showChat");
 // const backBtn = document.querySelector(".header__back");
 myVideo.muted = true;
 
-const user = prompt("Enter your name");
+let user = "";
+
+modalBtn.addEventListener("click", () => {
+   modal.classList.remove("flex");
+   modal.classList.add("hidden");
+
+   meetingWrapper.classList.remove("hidden");
+   meetingWrapper.classList.add("block");
+
+   user = prompt("Enter your name");
+   body.requestFullscreen({ navigationUI: "show" }).then(() => { }).catch((err) => {
+      alert(`An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`);
+   });
+});
 
 var peer = new Peer(undefined, {
    path: "/peerjs",
@@ -143,7 +160,7 @@ endBtn.addEventListener("click", () => {
 socket.on("createMessage", (message, userName) => {
    let str = messages.innerHTML;
    if (userName === user) {
-      str = `
+      str += `
       <div
       class="flex w-full mt-2 space-x-3 max-w-xs ml-auto justify-end"
     >
@@ -164,7 +181,7 @@ socket.on("createMessage", (message, userName) => {
       ></div>
     </div>`
    } else {
-      str = `
+      str += `
       <div class="flex w-full mt-2 space-x-3 max-w-xs">
       <div
         class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"

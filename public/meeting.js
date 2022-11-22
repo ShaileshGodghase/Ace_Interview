@@ -210,14 +210,27 @@ socket.on("createMessage", (message, userName) => {
 });
 
 // ===========================================================
+let cppCode = '//Ace Interview\n#include<bits/stdc++.h>\nusing namespace std;\nint main()\n{\ncout<<"Allkj";\nreturn 0;\n}'
+let javaCode = 'import java.util.*;\nimport java.lang.*;\nimport java.io.*;\n\nclass AceInterview\n{\npublic static void main (String[] args) throws java.lang.Exception\n{\n		// your code goes here  \n}\n}';
+
+let pythonCode = '#Ace Interview\n#your code goes here..';
+
+const langSelector = document.getElementById("languages");
+const languages = [cppCode, javaCode, pythonCode];
+
+langSelector.addEventListener("change", () => {
+   console.log(langSelector.options[langSelector.selectedIndex].text);
+});
 
 const editor = CodeMirror(document.querySelector("#editor"), {
-   lineNumbers: true,
+   // lineNumbers: true,
    tabSize: 2,
-   value: 'console.log("Hello, World");',
+   value: "Write code here....",
    mode: "javascript",
    theme: "dracula",
+   autofocus: true
 });
+
 let menuBtn = document.getElementById("menu");
 let sidebar = document.getElementById("sidebar");
 let mainContent = document.getElementById("mainContent");

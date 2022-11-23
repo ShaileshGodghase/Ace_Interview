@@ -5,8 +5,6 @@ const body = document.getElementById('body');
 const modal = document.getElementById('modal');
 const modalBtn = document.getElementById('modalButton');
 const meetingWrapper = document.getElementById('meetingWrapper');
-// const showChat = document.querySelector("#showChat");
-// const backBtn = document.querySelector(".header__back");
 myVideo.muted = true;
 
 let user = "";
@@ -100,17 +98,11 @@ muteButton.addEventListener("click", () => {
    const enabled = myVideoStream.getAudioTracks()[0].enabled;
    if (enabled) {
       myVideoStream.getAudioTracks()[0].enabled = false;
-      //   html = `<i class="fas fa-microphone-slash"></i>`;
-      //   muteButton.classList.toggle("background__red");
-      //   muteButton.innerHTML = html;
       muteButton.classList.add("bg-red-600");
       muteButton.classList.remove("bg2");
       muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
    } else {
       myVideoStream.getAudioTracks()[0].enabled = true;
-      //   html = `<i class="fas fa-microphone"></i>`;
-      //   muteButton.classList.toggle("background__red");
-      //   muteButton.innerHTML = html;
       muteButton.classList.add("bg2");
       muteButton.classList.remove("bg-red-600");
       muteButton.innerHTML = `<i class="fa-regular fa-microphone"></i>`;
@@ -121,17 +113,11 @@ stopVideo.addEventListener("click", () => {
    const enabled = myVideoStream.getVideoTracks()[0].enabled;
    if (enabled) {
       myVideoStream.getVideoTracks()[0].enabled = false;
-      //   html = `<i class="fas fa-video-slash"></i>`;
-      //   stopVideo.classList.toggle("background__red");
-      //   stopVideo.innerHTML = html;
       stopVideo.classList.add("bg-red-600");
       stopVideo.classList.remove("bg2");
       stopVideo.innerHTML = `<i class="fa-regular fa-video-slash"></i>`;
    } else {
       myVideoStream.getVideoTracks()[0].enabled = true;
-      //   html = `<i class="fas fa-video"></i>`;
-      //   stopVideo.classList.toggle("background__red");
-      //   stopVideo.innerHTML = html;
       stopVideo.classList.add("bg2");
       stopVideo.classList.remove("bg-red-600");
       stopVideo.innerHTML = `<i class="fa-regular fa-video"></i>`;
@@ -156,6 +142,8 @@ endBtn.addEventListener("click", () => {
       endBtn.innerHTML = `<i class="fa-regular fa-phone"></i>`;
    }
 });
+
+
 const CodeMirrorCode = document.querySelector('.CodeMirror-code')
 
 
@@ -202,13 +190,6 @@ socket.on("createMessage", (message, userName) => {
       `
    }
    messages.innerHTML = str;
-   // messages.innerHTML =
-   //   messages.innerHTML +
-   //   `<div class="message">
-   //       <b><i class="far fa-user-circle"></i> <span> ${userName === user ? "me" : userName
-   //   }</span> </b>
-   //       <span>${message}</span>
-   //   </div>`;
 });
 
 // ===========================================================
@@ -236,10 +217,11 @@ const editor = CodeMirror(document.querySelector("#editor"), {
 editor.on("change", (instance, changes) => {
    let code = editor.getValue();
    // console.log(code);
-   socket.emit("createEditor", code);
+   socket.emit("editor", code);
 });
 
 socket.on("createEditor", (code, userName) => {
+   console.log(code);
    editor.setValue(code);
 });
 

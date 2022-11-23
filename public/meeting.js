@@ -157,11 +157,8 @@ endBtn.addEventListener("click", () => {
    }
 });
 const CodeMirrorCode = document.querySelector('.CodeMirror-code')
-socket.on("createEditor", (code, userName) => {
-   let str = CodeMirrorCode.innerHTML;
-   str += code;
-   CodeMirrorCode.innerHTML = str;
-});
+
+
 socket.on("createMessage", (message, userName) => {
    let str = messages.innerHTML;
    if (userName === user) {
@@ -234,6 +231,16 @@ const editor = CodeMirror(document.querySelector("#editor"), {
    mode: "javascript",
    theme: "dracula",
    autofocus: true
+});
+
+editor.on("change", (instance, changes) => {
+   let code = editor.getValue();
+   // console.log(code);
+   socket.emit("createEditor", code);
+});
+
+socket.on("createEditor", (code, userName) => {
+   editor.setValue(code);
 });
 
 let menuBtn = document.getElementById("menu");

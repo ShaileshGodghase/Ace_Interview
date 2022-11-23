@@ -33,7 +33,11 @@ io.on("connection", (socket) => {
     socket.on("message", (message) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
+
+    socket.on("editor", (code) => {
+      io.to(roomId).emit("createEditor", code, userName);
+    });
   });
 });
 
-server.listen(process.env.PORT || 3030);
+server.listen(process.env.PORT || 3000);

@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
     });
 
     socket.on("editor", (code, roomId) => {
-      io.to(roomId).emit("createEditor", code, userName);
+      socket.in(roomId).emit("createEditor", code, userName);
     });
   });
 });

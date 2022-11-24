@@ -60,6 +60,7 @@ const connectToNewUser = (userId, stream) => {
 };
 
 peer.on("open", (id) => {
+   console.log("Open")
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
@@ -77,14 +78,14 @@ let messages = document.getElementById("messages");
 
 send.addEventListener("click", (e) => {
    if (text.value.length !== 0) {
-      socket.emit("message", text.value);
+      socket.emit("message", text.value, user);
       text.value = "";
    }
 });
 
 text.addEventListener("keydown", (e) => {
    if (e.key === "Enter" && text.value.length !== 0) {
-      socket.emit("message", text.value);
+      socket.emit("message", text.value, user);
       text.value = "";
    }
 });
@@ -215,9 +216,9 @@ const editor = CodeMirror(document.querySelector("#editor"), {
 });
 
 editor.on("change", (instance, changes) => {
-   let code = editor.getValue();
+   let code = instance.getValue();
    // console.log(code);
-   socket.emit("editor", code);
+   socket.emit("editor", code, ROOM_ID);
 });
 
 socket.on("createEditor", (code, userName) => {

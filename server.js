@@ -30,11 +30,11 @@ io.on("connection", (socket) => {
   socket.on("join-room", (roomId, userId, userName) => {
     socket.join(roomId);
     socket.to(roomId).broadcast.emit("user-connected", userId);
-    socket.on("message", (message) => {
+    socket.on("message", (message, userName) => {
       io.to(roomId).emit("createMessage", message, userName);
     });
 
-    socket.on("editor", (code) => {
+    socket.on("editor", (code, roomId) => {
       io.to(roomId).emit("createEditor", code, userName);
     });
   });

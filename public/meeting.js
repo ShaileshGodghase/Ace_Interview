@@ -218,12 +218,17 @@ const editor = CodeMirror(document.querySelector("#editor"), {
 editor.on("change", (instance, changes) => {
    let code = instance.getValue();
    // console.log(code);
-   socket.emit("editor", code, ROOM_ID);
+   const { origin } = changes;
+   if (origin !== 'setValue') {
+      socket.emit("editor", code, ROOM_ID);
+   }
 });
 
 socket.on("createEditor", (code, userName) => {
-   console.log(code);
-   editor.setValue(code);
+   // console.log(code);
+   if (code !== null) {
+      editor.setValue(code);
+   }
 });
 
 let menuBtn = document.getElementById("menu");

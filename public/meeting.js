@@ -60,7 +60,7 @@ const connectToNewUser = (userId, stream) => {
 };
 
 peer.on("open", (id) => {
-   console.log("Open")
+   console.log("Open");
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
@@ -207,12 +207,14 @@ langSelector.addEventListener("change", () => {
 });
 
 const editor = CodeMirror(document.querySelector("#editor"), {
-   // lineNumbers: true,
-   tabSize: 2,
+   lineNumbers: true,
+   mode: "text/x-c++src",
    value: "Write code here....",
-   mode: "javascript",
-   theme: "dracula",
-   autofocus: true
+   theme: "material-ocean",
+   autofocus: true,
+   matchBrackets: true,
+   styleActiveLine: true,
+   autoRefresh: true
 });
 
 editor.on("change", (instance, changes) => {

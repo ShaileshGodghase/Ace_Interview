@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
+const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 app.set("view engine", "ejs");
 
@@ -15,7 +16,8 @@ const peerServer = ExpressPeerServer(server, {
 });
 
 app.use("/peerjs", peerServer);
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);

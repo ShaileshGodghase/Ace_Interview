@@ -24,7 +24,7 @@ modalBtn.addEventListener("click", () => {
 
 var peer = new Peer(undefined, {
    path: "/peerjs",
-   host: "/",
+   host: "https://video-chat-nu-three.vercel.app//",
    port: "443",
    config: {
       'iceServers': [

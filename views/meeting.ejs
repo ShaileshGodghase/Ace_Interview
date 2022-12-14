@@ -136,94 +136,46 @@
             </div>
             <div class="flex" id="menu"><i class="fa-solid fa-bars"></i></div>
           </header>
-          <div class="flex h-full">
+          <div class="flex h-full overflow-auto">
             <main
               id="mainContent"
               class="flex flex-col w-3/4 h-full bg-white overflow-x-hidden overflow-y-auto mb-14 transition-all duration-500"
             >
               <div class="flex w-full h-full justify-between mx-auto">
-                <div class="bg-gray-500 grid grid-rows-5 w-3/4">
-                  <div
-                    class="bg-black row-start-1 max-w-[500px] row-end-4 text-white"
-                  >
-                    <!-- <h1>Editor</h1> -->
+                <div class="bg2 grid grid-rows-1 h-full w-full">
+                  <div class="h-full overflow-auto">
                     <div id="editor" class="w-full h-full"></div>
-                    <!-- <textarea
-                      id="editor"
-                      class="w-full h-full resize-none"
-                      placeholder="Write code here"
-                    ></textarea> -->
                   </div>
-                  <div class="row-start-4 row-end-6 grid">
-                    <div class="grid grid-row-1 grid-col-3 grid-flow-col">
-                      <div class="bg3 p-2">
-                        <!-- <h1>Input container</h1> -->
-                        <textarea
-                          class="w-full h-full p-2 border-none bg-gray-800 text-white outline-none resize-none"
-                          placeholder="Input Goes Here..."
-                        ></textarea>
-                      </div>
-                      <div class="bg3 p-2">
-                        <!-- <h1>Output container</h1> -->
-                        <textarea
-                          class="w-full h-full p-2 bg-gray-800 text-white border-none outline-none resize-none"
-                          placeholder="Output will appear here..."
-                        ></textarea>
-                      </div>
-                      <div
-                        class="mainBg text-white flex justify-evenly flex-col px-4"
+                  <div class="flex justify-between px-4">
+                    <div class="flex justify-center items-center">
+                      <button
+                        id="inviteButton"
+                        class="bg-blue-600 text-white py-1 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
                       >
-                        <div>
-                          <label
-                            for="countries"
-                            class="block mb-2 text-lg font-medium"
-                            >Language</label
-                          >
-                          <select
-                            id="languages"
-                            class="bg-gray-50 border outline-none cursor-pointer border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          >
-                            <option selected value="0">C++</option>
-                            <option value="1">Java</option>
-                            <option value="2">Python</option>
-                          </select>
-                          <div class="py-3 flex justify-center items-center">
-                            <button
-                              class="bg-blue-600 py-2 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
-                            >
-                              Run
-                            </button>
-                          </div>
-                        </div>
-                        <div class="flex justify-evenly">
-                          <button
-                            id="micBtn"
-                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                          >
-                            <i class="fa-regular fa-microphone"></i>
-                          </button>
-                          <button
-                            id="videoBtn"
-                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                          >
-                            <i class="fa-regular fa-video"></i>
-                          </button>
-                          <button
-                            id="endBtn"
-                            class="bg2 focus:outline-none px-5 py-4 rounded-full"
-                          >
-                            <i class="fa-regular fa-phone"></i>
-                          </button>
-                        </div>
-                        <div class="flex justify-center items-center">
-                          <button
-                            id="inviteButton"
-                            class="bg-blue-600 py-1 px-10 font-medium rounded-sm border-2 border-blue-600 hover:bg-gray-400 hover:text-black duration-500"
-                          >
-                            Share Link
-                          </button>
-                        </div>
-                      </div>
+                        Share Link
+                      </button>
+                    </div>
+                    <div class="flex justify-evenly flex-grow p-3">
+                      <button
+                        id="micBtn"
+                        class="focus:outline-none px-5 py-4 border-2 rounded-full hover:border-2 border-white"
+                      >
+                        <i
+                          class="text-white font-bold fa-regular fa-microphone"
+                        ></i>
+                      </button>
+                      <button
+                        id="videoBtn"
+                        class="focus:outline-none px-5 py-4 rounded-full border-2 hover:border-2 border-white"
+                      >
+                        <i class="fa-regular text-white fa-video"></i>
+                      </button>
+                      <button
+                        id="endBtn"
+                        class="focus:outline-none px-5 py-4 rounded-full border-2 hover:border-2 border-white"
+                      >
+                        <i class="fa-regular text-white fa-phone"></i>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -231,7 +183,7 @@
                   <div class="h-full overflow-auto">
                     <div
                       id="video-grid"
-                      class="h-full pl-2 pr-4 overflow-auto"
+                      class="h-full pl-2 pb-10 pr-4 overflow-auto"
                     ></div>
                   </div>
                 </div>

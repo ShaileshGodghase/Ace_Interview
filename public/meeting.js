@@ -17,9 +17,9 @@ modalBtn.addEventListener("click", () => {
    meetingWrapper.classList.add("block");
 
    user = prompt("Enter your name");
-   body.requestFullscreen({ navigationUI: "show" }).then(() => { }).catch((err) => {
-      alert(`An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`);
-   });
+   // body.requestFullscreen({ navigationUI: "show" }).then(() => { }).catch((err) => {
+   //    alert(`An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`);
+   // });
 });
 
 var peer = new Peer(undefined, {
@@ -124,13 +124,13 @@ muteButton.addEventListener("click", () => {
    if (enabled) {
       myVideoStream.getAudioTracks()[0].enabled = false;
       muteButton.classList.add("bg-red-600");
-      muteButton.classList.remove("bg2");
-      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
+      // muteButton.classList.remove("bg2");
+      muteButton.innerHTML = `<i class="fa-solid text-white fa-microphone-slash"></i>`;
    } else {
       myVideoStream.getAudioTracks()[0].enabled = true;
-      muteButton.classList.add("bg2");
+      // muteButton.classList.add("bg2");
       muteButton.classList.remove("bg-red-600");
-      muteButton.innerHTML = `<i class="fa-regular fa-microphone"></i>`;
+      muteButton.innerHTML = `<i class="fa-regular text-white fa-microphone"></i>`;
    }
 });
 
@@ -140,12 +140,12 @@ stopVideo.addEventListener("click", () => {
       myVideoStream.getVideoTracks()[0].enabled = false;
       stopVideo.classList.add("bg-red-600");
       stopVideo.classList.remove("bg2");
-      stopVideo.innerHTML = `<i class="fa-regular fa-video-slash"></i>`;
+      stopVideo.innerHTML = `<i class="fa-regular text-white fa-video-slash"></i>`;
    } else {
       myVideoStream.getVideoTracks()[0].enabled = true;
       stopVideo.classList.add("bg2");
       stopVideo.classList.remove("bg-red-600");
-      stopVideo.innerHTML = `<i class="fa-regular fa-video"></i>`;
+      stopVideo.innerHTML = `<i class="fa-regular text-white fa-video"></i>`;
    }
 });
 
@@ -160,11 +160,11 @@ endBtn.addEventListener("click", () => {
    if (endBtn.classList.contains("bg2")) {
       endBtn.classList.add("bg-red-600");
       endBtn.classList.remove("bg2");
-      endBtn.innerHTML = `<i class="fa-regular fa-phone-slash"></i>`;
+      endBtn.innerHTML = `<i class="fa-regular text-white fa-phone-slash"></i>`;
    } else {
       endBtn.classList.add("bg2");
       endBtn.classList.remove("bg-red-600");
-      endBtn.innerHTML = `<i class="fa-regular fa-phone"></i>`;
+      endBtn.innerHTML = `<i class="fa-regular text-white fa-phone"></i>`;
    }
 });
 
@@ -223,12 +223,12 @@ let javaCode = 'import java.util.*;\nimport java.lang.*;\nimport java.io.*;\n\nc
 
 let pythonCode = '#Ace Interview\n#your code goes here..';
 
-const langSelector = document.getElementById("languages");
-const languages = [cppCode, javaCode, pythonCode];
+// const langSelector = document.getElementById("languages");
+// const languages = [cppCode, javaCode, pythonCode];
 
-langSelector.addEventListener("change", () => {
-   console.log(langSelector.options[langSelector.selectedIndex].text);
-});
+// langSelector.addEventListener("change", () => {
+//    console.log(langSelector.options[langSelector.selectedIndex].text);
+// });
 
 const editor = CodeMirror(document.querySelector("#editor"), {
    lineNumbers: true,

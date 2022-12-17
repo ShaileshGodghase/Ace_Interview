@@ -1,5 +1,12 @@
 (function () {
   "use strict";
+  const joinBtn = document.getElementById("join");
+  const idInput = document.getElementById("idinput");
+
+  joinBtn.addEventListener("click", () => {
+    idInput.focus();
+  });
+
   const darkTogglerCheckbox = document.querySelector("#darkToggler");
   const html = document.querySelector("html");
   const darkModeToggler = () => {

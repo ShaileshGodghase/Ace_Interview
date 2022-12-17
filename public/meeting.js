@@ -150,9 +150,12 @@ stopVideo.addEventListener("click", () => {
 });
 
 inviteButton.addEventListener("click", (e) => {
+   let parts = window.location.pathname.split("/");
+   let lastSegment = parts[parts.length - 1];
+
    prompt(
-      "Copy this link and send it to people you want to meet with",
-      window.location.href
+      "Copy the code and send it to people you want to meet with",
+      lastSegment
    );
 });
 

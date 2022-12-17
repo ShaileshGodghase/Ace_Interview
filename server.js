@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser')
 const server = require("http").Server(app);
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
@@ -16,12 +17,23 @@ const peerServer = ExpressPeerServer(server, {
 });
 
 app.use("/peerjs", peerServer);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 
 app.get("/", (req, res) => {
   res.render("home");
   // res.redirect(`/${uuidv4()}`);
+});
+
+app.post("/createmeet", (req, res) => {
+  res.redirect(`/${uuidv4()}`);
+});
+
+app.post("/joinmeet", (req, res) => {
+  let meetId = req.body.search;
+  res.redirect(`/${meetId}`);
 });
 
 app.get("/:room", (req, res) => {

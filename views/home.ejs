@@ -65,12 +65,14 @@ c-11 24 -14 25 -110 25 -54 0 -98 4 -98 8 0 4 25 51 56 103 86 145 86 146 72
           <div
             class="a1 a10 a3 a5 a4 a9 a11 a12 a13 ao lg:aq lg:a14 lg:aw lg:au"
           >
-            <a
-              href="/"
+            <form action="/createmeet" method="post">
+              <button
+              type="submit"
               class="a4 a15 aS a16 a17 a18 az aE aI bg-blue-700 hover:a19 lg:a14"
             >
               Create Meeting
-            </a>
+            </button>
+            </form>
             <a
               href="/"
               class="a4 a15 aS a_[#222C40] a17 a18 az aE aI hover:a19 lg:a14"
@@ -172,8 +174,9 @@ c-11 24 -14 25 -110 25 -54 0 -98 4 -98 8 0 4 25 51 56 103 86 145 86 146 72
                 Ace Interview isn't like the rest. All of the interviews, meetings, and more can be done on their device, whenever they want, through a one-stop-shop.
               </p>
               <div class="wow fadeInUp a5 a6 a9 am lg:as" data-wow-delay=".5s">
-                <a
-                  href="https://videochat-49v9.onrender.com/" target="_blank"
+                <form action="/createmeet" method="post">
+                  <button
+                  type="submit"
                   class="aD a9 aS a16 a1N[10px] a18 aE aF aI bg-blue-700 hover:a19 md:a1N[14px] md:aU"
                 >
                   Create meeting
@@ -191,12 +194,13 @@ c-11 24 -14 25 -110 25 -54 0 -98 4 -98 8 0 4 25 51 56 103 86 145 86 146 72
                       />
                     </svg>
                   </span>
-                </a>
+                </button>
+                </form>
                 <a
                   href="#"
                   class="aD a9 aS a1N[14px] aU aE aF a1t hover:aH dark:aI dark:hover:aH"
                 >
-                  <form>
+                  <form action="/joinmeet" method="post">
                     <label
                       for="search"
                       class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -223,8 +227,8 @@ c-11 24 -14 25 -110 25 -54 0 -98 4 -98 8 0 4 25 51 56 103 86 145 86 146 72
                         </svg>
                       </div>
                       <input
-                        type="search"
-                        id="search"
+                        type="text"
+                        name="search"
                         class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder=" Meeting ID"
                         required

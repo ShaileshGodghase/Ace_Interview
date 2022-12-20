@@ -35,7 +35,9 @@ app.post("/joinmeet", (req, res) => {
   let meetId = req.body.search;
   res.redirect(`/${meetId}`);
 });
-
+app.get("/feedback", (req, res) => {
+  res.render("feedback");
+})
 app.get("/:room", (req, res) => {
   // res.render("room", { roomId: req.params.room });
   res.render("meeting", { roomId: req.params.room });

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/tailwind.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: sans-serif;
+        background-color: #111722;
+        color: white;
+      }
+
+      .feedback-wrapper {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #222c40;
+        padding: 25px 18px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .item {
+        width: 90px;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+      }
+      .radio {
+        display: none;
+      }
+      .radio ~ span {
+        font-size: 3rem;
+        filter: grayscale(100);
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .radio:checked ~ span {
+        filter: grayscale(0);
+        font-size: 4rem;
+      }
+      .feedback {
+        width: 100%;
+      }
+      .feedback textarea,
+      .feedback input {
+        max-width: 300px;
+        width: 100%;
+        display: block;
+        margin: 0.5em auto;
+        padding: 0.5em;
+        font-family: inherit;
+        border: 2px solid transparent;
+        /* border: 1px solid #d1d2d7; */
+        border-radius: 3px;
+        background-color: #374151;
+        color: white;
+      }
+      .feedback textarea:focus,
+      .feedback textarea:active,
+      .feedback input:focus,
+      .feedback input:active {
+        border-color: #1d4ed8;
+        box-shadow: 0px 0px 0px 3px rgba(29, 78, 216, 0.2);
+        transition: 100ms;
+        outline: 0;
+      }
+      .feedback textarea {
+        height: 100px;
+      }
+      .feedback button {
+        margin: 1em auto;
+        display: table;
+        text-align: center;
+      }
+      .feedback button:focus,
+      .feedback button:active {
+        outline: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="w-full">
+      <a href="#" class="flex justify-center mb-6 items-center">
+        <!-- <img
+           src=""
+           class="h-6 mr-3 sm:h-9"
+           alt="Landwind Logo"
+         /> -->
+        <svg
+          class="h-6 mr-3 sm:h-9"
+          version="1.0"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 67.000000 55.000000"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <g
+            transform="translate(0.000000,55.000000) scale(0.100000,-0.100000)"
+            fill="#1D4ACA"
+            stroke="none"
+          >
+            <path
+              d="M178 382 c-26 -48 -72 -129 -103 -179 l-54 -93 32 0 c31 1 35 6 118
+153 83 146 86 153 73 180 -8 15 -16 27 -17 27 -1 0 -23 -40 -49 -88z"
+            />
+            <path
+              d="M258 363 c-31 -54 -77 -133 -102 -175 l-46 -78 160 0 160 0 -12 25
+c-11 24 -14 25 -110 25 -54 0 -98 4 -98 8 0 4 25 51 56 103 86 145 86 146 72
+169 -7 11 -15 20 -19 20 -3 0 -31 -44 -61 -97z"
+            />
+            <path
+              d="M377 409 c-19 -30 -46 -77 -60 -104 -21 -42 -23 -53 -12 -68 7 -9 15
+-17 18 -17 3 0 22 29 43 65 21 36 42 65 46 65 4 0 39 -54 78 -120 65 -110 74
+-120 101 -120 l29 0 -50 85 c-28 47 -73 124 -101 173 -28 48 -53 89 -55 91 -1
+2 -18 -21 -37 -50z"
+            />
+          </g>
+        </svg>
+        <span
+          class="self-center text-2xl font-extrabold whitespace-nowrap dark:aI"
+          >Ace Interview</span
+        >
+      </a>
+      <div class="feedback-wrapper">
+        <h1 class="text-4xl pb-2">
+          Thank you for using <br />
+          our platform
+        </h1>
+        <p>Let us know how we did</p>
+
+        <div class="container">
+          <div class="item">
+            <label for="0">
+              <input
+                class="radio"
+                type="radio"
+                name="feedback"
+                id="0"
+                value="0"
+              />
+              <span>🤬</span>
+            </label>
+          </div>
+
+          <div class="item">
+            <label for="1">
+              <input
+                class="radio"
+                type="radio"
+                name="feedback"
+                id="1"
+                value="1"
+              />
+              <span>🙁</span>
+            </label>
+          </div>
+
+          <div class="item">
+            <label for="2">
+              <input
+                class="radio"
+                type="radio"
+                name="feedback"
+                id="2"
+                value="2"
+              />
+              <span>😶</span>
+            </label>
+          </div>
+
+          <div class="item">
+            <label for="3">
+              <input
+                class="radio"
+                type="radio"
+                name="feedback"
+                id="3"
+                value="3"
+              />
+              <span>😁</span>
+            </label>
+          </div>
+
+          <div class="item">
+            <label for="4">
+              <input
+                class="radio"
+                type="radio"
+                name="feedback"
+                id="4"
+                value="4"
+              />
+              <span>😍</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <div class="feedback">
+            <textarea
+              placeholder="What can we do to improve?"
+              required
+            ></textarea>
+            <input type="text" placeholder="Email" required />
+            <button
+              class="a4 a15 aS a16 a17 a18 az aE aI bg-blue-700 hover:a19 lg:a14"
+            >
+              Send Your Feedback
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

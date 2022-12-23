@@ -7,20 +7,20 @@ const modalBtn = document.getElementById('modalButton');
 const meetingWrapper = document.getElementById('meetingWrapper');
 myVideo.muted = true;
 
-let user = "";
+let user = prompt("Enter your name");
 
-modalBtn.addEventListener("click", () => {
-   modal.classList.remove("flex");
-   modal.classList.add("hidden");
+// modalBtn.addEventListener("click", () => {
+//    modal.classList.remove("flex");
+//    modal.classList.add("hidden");
 
-   meetingWrapper.classList.remove("hidden");
-   meetingWrapper.classList.add("block");
+//    meetingWrapper.classList.remove("hidden");
+//    meetingWrapper.classList.add("block");
 
-   user = prompt("Enter your name");
-   // body.requestFullscreen({ navigationUI: "show" }).then(() => { }).catch((err) => {
-   //    alert(`An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`);
-   // });
-});
+//    user = prompt("Enter your name");
+// body.requestFullscreen({ navigationUI: "show" }).then(() => { }).catch((err) => {
+//    alert(`An error occurred while trying to switch into fullscreen mode: ${err.message} (${err.name})`);
+// });
+// });
 
 var peer = new Peer(undefined, {
    path: "/peerjs",

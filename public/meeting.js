@@ -184,7 +184,7 @@ socket.on("createMessage", (message, userName) => {
     >
       <div>
         <div
-          class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg"
+          class="bg-blue-600 break-all text-white p-3 rounded-l-lg rounded-br-lg"
         >
           <p class="text-sm">
             ${message}
@@ -205,7 +205,7 @@ socket.on("createMessage", (message, userName) => {
         class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300"
       ></div>
       <div>
-        <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">
+        <div class="bg-gray-300 break-all p-3 rounded-r-lg rounded-bl-lg">
           <p class="text-sm">
             ${message}.
           </p>

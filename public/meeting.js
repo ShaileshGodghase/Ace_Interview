@@ -88,8 +88,14 @@ peer.on("open", (id) => {
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
+peer.on("disconnected", (id) => {
+   const v = document.getElementById(user);
+   v.remove();
+})
+
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;
+   video.id = user;
    video.addEventListener("loadedmetadata", () => {
       video.play();
       videoGrid.append(video);

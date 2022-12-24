@@ -7,7 +7,16 @@ const modalBtn = document.getElementById('modalButton');
 const meetingWrapper = document.getElementById('meetingWrapper');
 myVideo.muted = true;
 
-let user = prompt("Enter your name");
+
+function getUserName() {
+   var input = prompt("Enter your name");
+   if (input == null) {
+      getUserName();
+   }
+   return input;
+}
+let user = getUserName();
+
 myVideo.id = user;
 // modalBtn.addEventListener("click", () => {
 //    modal.classList.remove("flex");
@@ -89,12 +98,20 @@ peer.on("open", (id) => {
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
-peer.on("disconnected", (id) => {
-   const v = document.getElementById(id);
-   if (v) {
-      v.remove();
+// peer.on("disconnected", (id) => {
+//    const v = document.getElementById(id);
+//    if (v == null) {
+//       v.remove();
+//    }
+// })
+
+let allVideoEle = document.getElementsByTagName("video");
+
+for (item in allVideoEle) {
+   if (item == null) {
+      item.remove();
    }
-})
+}
 
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;

@@ -98,18 +98,6 @@ peer.on("open", (id) => {
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
-function removeVideo() {
-   let allVideoEle = document.getElementsByTagName("video");
-   for (item in allVideoEle) {
-      if (item == null) {
-         item.remove();
-      }
-   }
-}
-peer.on("disconnected", (id) => {
-   removeVideo();
-});
-
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;
    video.addEventListener("loadedmetadata", () => {

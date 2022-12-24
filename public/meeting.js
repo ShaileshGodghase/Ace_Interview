@@ -8,7 +8,7 @@ const meetingWrapper = document.getElementById('meetingWrapper');
 myVideo.muted = true;
 
 let user = prompt("Enter your name");
-
+myVideo.id = user;
 // modalBtn.addEventListener("click", () => {
 //    modal.classList.remove("flex");
 //    modal.classList.add("hidden");
@@ -78,6 +78,7 @@ navigator.mediaDevices
 const connectToNewUser = (userId, stream) => {
    const call = peer.call(userId, stream);
    const video = document.createElement("video");
+   video.id = userId;
    call.on("stream", (userVideoStream) => {
       addVideoStream(video, userVideoStream);
    });
@@ -89,13 +90,14 @@ peer.on("open", (id) => {
 });
 
 peer.on("disconnected", (id) => {
-   const v = document.getElementById(user);
-   v.remove();
+   const v = document.getElementById(id);
+   if (v) {
+      v.remove();
+   }
 })
 
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;
-   video.id = user;
    video.addEventListener("loadedmetadata", () => {
       video.play();
       videoGrid.append(video);

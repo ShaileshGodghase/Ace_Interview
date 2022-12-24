@@ -98,20 +98,17 @@ peer.on("open", (id) => {
    socket.emit("join-room", ROOM_ID, id, user);
 });
 
-// peer.on("disconnected", (id) => {
-//    const v = document.getElementById(id);
-//    if (v == null) {
-//       v.remove();
-//    }
-// })
-
-let allVideoEle = document.getElementsByTagName("video");
-
-for (item in allVideoEle) {
-   if (item == null) {
-      item.remove();
+function removeVideo() {
+   let allVideoEle = document.getElementsByTagName("video");
+   for (item in allVideoEle) {
+      if (item == null) {
+         item.remove();
+      }
    }
 }
+peer.on("disconnected", (id) => {
+   removeVideo();
+});
 
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;

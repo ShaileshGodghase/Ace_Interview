@@ -8,14 +8,16 @@ const meetingWrapper = document.getElementById('meetingWrapper');
 myVideo.muted = true;
 
 
-function getUserName() {
-   var input = prompt("Enter your name");
-   if (input == null) {
-      getUserName();
-   }
-   return input;
-}
-let user = getUserName();
+// function getUserName() {
+//    var input = prompt("Enter your name");
+//    if (input == null) {
+//       getUserName();
+//    }
+//    return input;
+// }
+// let user = getUserName();
+
+let user = prompt("Enter your name");
 
 myVideo.id = user;
 // modalBtn.addEventListener("click", () => {
@@ -60,7 +62,6 @@ var peer = new Peer(undefined, {
    },
    debug: 3
 });
-
 let myVideoStream;
 navigator.mediaDevices
    .getUserMedia({
@@ -70,7 +71,6 @@ navigator.mediaDevices
    .then((stream) => {
       myVideoStream = stream;
       addVideoStream(myVideo, stream);
-
       peer.on("call", (call) => {
          call.answer(stream);
          const video = document.createElement("video");
@@ -78,26 +78,21 @@ navigator.mediaDevices
             addVideoStream(video, userVideoStream);
          });
       });
-
       socket.on("user-connected", (userId) => {
          connectToNewUser(userId, stream);
       });
    });
-
 const connectToNewUser = (userId, stream) => {
    const call = peer.call(userId, stream);
    const video = document.createElement("video");
-   video.id = userId;
    call.on("stream", (userVideoStream) => {
       addVideoStream(video, userVideoStream);
    });
 };
-
 peer.on("open", (id) => {
    console.log("Open");
    socket.emit("join-room", ROOM_ID, id, user);
 });
-
 const addVideoStream = (video, stream) => {
    video.srcObject = stream;
    video.addEventListener("loadedmetadata", () => {
@@ -105,30 +100,25 @@ const addVideoStream = (video, stream) => {
       videoGrid.append(video);
    });
 };
-
 let text = document.getElementById("chat_message");
 let send = document.getElementById("send");
 let messages = document.getElementById("messages");
-
 send.addEventListener("click", (e) => {
    if (text.value.length !== 0) {
       socket.emit("message", text.value, user);
       text.value = "";
    }
 });
-
 text.addEventListener("keydown", (e) => {
    if (e.key === "Enter" && text.value.length !== 0) {
       socket.emit("message", text.value, user);
       text.value = "";
    }
 });
-
 const inviteButton = document.getElementById("inviteButton");
 const muteButton = document.getElementById("micBtn");
 const stopVideo = document.getElementById("videoBtn");
 const endBtn = document.getElementById("endBtn");
-
 muteButton.addEventListener("click", () => {
    const enabled = myVideoStream.getAudioTracks()[0].enabled;
    if (enabled) {
@@ -143,7 +133,6 @@ muteButton.addEventListener("click", () => {
       muteButton.innerHTML = `<i class="fa-regular text-white fa-microphone"></i>`;
    }
 });
-
 stopVideo.addEventListener("click", () => {
    const enabled = myVideoStream.getVideoTracks()[0].enabled;
    if (enabled) {
@@ -158,17 +147,14 @@ stopVideo.addEventListener("click", () => {
       stopVideo.innerHTML = `<i class="fa-regular text-white fa-video"></i>`;
    }
 });
-
 inviteButton.addEventListener("click", (e) => {
    let parts = window.location.pathname.split("/");
    let lastSegment = parts[parts.length - 1];
-
    prompt(
       "Copy the code and send it to people you want to meet with",
       lastSegment
    );
 });
-
 endBtn.addEventListener("click", () => {
    if (endBtn.classList.contains("bg2")) {
       endBtn.classList.add("bg-red-600");
@@ -180,11 +166,7 @@ endBtn.addEventListener("click", () => {
       endBtn.innerHTML = `<i class="fa-regular text-white fa-phone"></i>`;
    }
 });
-
-
 const CodeMirrorCode = document.querySelector('.CodeMirror-code')
-
-
 socket.on("createMessage", (message, userName) => {
    let str = messages.innerHTML;
    if (userName === user) {
@@ -229,20 +211,15 @@ socket.on("createMessage", (message, userName) => {
    }
    messages.innerHTML = str;
 });
-
 // ===========================================================
 let cppCode = '//Ace Interview\n#include<bits/stdc++.h>\nusing namespace std;\nint main()\n{\ncout<<"Allkj";\nreturn 0;\n}'
 let javaCode = 'import java.util.*;\nimport java.lang.*;\nimport java.io.*;\n\nclass AceInterview\n{\npublic static void main (String[] args) throws java.lang.Exception\n{\n		// your code goes here  \n}\n}';
-
 let pythonCode = '#Ace Interview\n#your code goes here..';
-
 // const langSelector = document.getElementById("languages");
 // const languages = [cppCode, javaCode, pythonCode];
-
 // langSelector.addEventListener("change", () => {
 //    console.log(langSelector.options[langSelector.selectedIndex].text);
 // });
-
 const editor = CodeMirror(document.querySelector("#editor"), {
    lineNumbers: true,
    mode: "text/x-c++src",
@@ -253,7 +230,6 @@ const editor = CodeMirror(document.querySelector("#editor"), {
    styleActiveLine: true,
    autoRefresh: true
 });
-
 editor.on("change", (instance, changes) => {
    let code = instance.getValue();
    // console.log(code);
@@ -262,18 +238,15 @@ editor.on("change", (instance, changes) => {
       socket.emit("editor", code, ROOM_ID);
    }
 });
-
 socket.on("createEditor", (code, userName) => {
    // console.log(code);
    if (code !== null) {
       editor.setValue(code);
    }
 });
-
 let menuBtn = document.getElementById("menu");
 let sidebar = document.getElementById("sidebar");
 let mainContent = document.getElementById("mainContent");
-
 menuBtn.addEventListener("click", () => {
    console.log("click");
    if (sidebar.classList.contains("flex")) {
@@ -289,7 +262,6 @@ menuBtn.addEventListener("click", () => {
       mainContent.classList.add("w-3/4");
    }
 });
-
  // const micBtn = document.getElementById("micBtn");
  // const videoBtn = document.getElementById("videoBtn");
  // const endBtn = document.getElementById("endBtn");

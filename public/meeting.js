@@ -166,9 +166,14 @@ endBtn.addEventListener("click", () => {
       endBtn.innerHTML = `<i class="fa-regular text-white fa-phone"></i>`;
    }
 });
+
 const CodeMirrorCode = document.querySelector('.CodeMirror-code')
 socket.on("createMessage", (message, userName) => {
    let str = messages.innerHTML;
+   let D = new Date()
+   let hrs = D.getHours();
+   let mins = D.getMinutes();
+
    if (userName === user) {
       str += `
       <div
@@ -183,7 +188,7 @@ socket.on("createMessage", (message, userName) => {
           </p>
         </div>
         <span class="text-xs text-gray-500 leading-none"
-          >2 min ago</span
+          >${hrs}:${mins}</span
         >
       </div>
       <div
@@ -203,7 +208,7 @@ socket.on("createMessage", (message, userName) => {
           </p>
         </div>
         <span class="text-xs text-gray-500 leading-none"
-          >2 min ago</span
+          >${hrs}:${mins}</span
         >
       </div>
     </div>
@@ -228,6 +233,8 @@ const editor = CodeMirror(document.querySelector("#editor"), {
    autofocus: true,
    matchBrackets: true,
    styleActiveLine: true,
+   autoCloseTags: true,
+   autoCloseBrackets: true,
    autoRefresh: true
 });
 editor.on("change", (instance, changes) => {

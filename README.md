@@ -93,4 +93,7 @@ Distributed under the MIT License. See [LICENSE](https://github.com/ShaileshGodg
 
 ## Authors
 
-* **Shailesh Godghase** - *Fullstack Developer* - [Shailesh Godghase](https://shaileshgodghase.me/) 
+* [Shailesh Godghase](https://www.linkedin.com/in/shaileshgodghase/)
+* [Atharva Nidhonkar](https://www.linkedin.com/in/atharva-nidhonkar-51476a1a5/)
+* [Jay Lokhande](https://www.linkedin.com/in/jay-lokhande-003a76200/)
+* [Rajwardhan Jadhav](https://www.linkedin.com/in/rajwardhan-jadhav-b8662220a/)
